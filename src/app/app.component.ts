@@ -164,5 +164,18 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
+  public sortDesc = (): void =>  {
+    this.objectData = [...this.objectData].sort(
+      (a: ObjectDetails, b: ObjectDetails) => b.labelId - a.labelId
+    );
+  }
+
+  
+  public sortAsc = (): void =>  {
+    this.objectData = [...this.objectData].sort(
+      (a: ObjectDetails, b: ObjectDetails) => a.labelId - b.labelId
+    );
+  }
+
 
 }
