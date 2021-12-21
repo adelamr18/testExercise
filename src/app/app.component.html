@@ -1,10 +1,10 @@
 <div class="objects-and-actions-container">
   <div class = "objects-container">
-    <ul class="objects-details-list" *ngFor="let object of objectData; trackBy: trackById" >
-      <div draggable="true" [ngClass]="{'hightlight-row': object?.isRowHighlighted}" (click)="hightlightRow(object)" class="object-cell draggable">
+    <ul class="objects-details-list" >
+      <div  *ngFor="let object of objectData; trackBy: trackById" id="draggable-list" draggable="true" [ngClass]="{'hightlight-row': object?.isRowHighlighted}" (click)="hightlightRow(object)" class="object-cell draggable">
         <li id="list-item" class="list-item">{{object.labelName}}</li>
-        <li (click)="removeObject(object)" class="fa fa-trash-o"></li>
-        <li id="object-id">{{object.labelId}}</li>
+        <li  (click)="removeObject(object)" class="{{object?.iconClass}}"></li>
+        <li  id="object-id">{{object.labelId}}</li>
       </div>
     </ul>
   </div>
