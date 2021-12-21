@@ -1,23 +1,23 @@
 export const objectsData = [
   {
-    labelName: 'Item 1',
+    labelName: '1',
     labelId: 0,
     isRowHighlighted: false,
     iconClass: 'fa fa-trash-o'
   },
   {
-    labelName: 'Item 2',
+    labelName: '2',
     labelId: 1,
     isRowHighlighted: false,
     iconClass: 'fa fa-trash-o'
   },
   {
-    labelName: 'Item 3',
+    labelName: '3',
     labelId: 2,
     isRowHighlighted: false,
     iconClass: 'fa fa-trash-o'
   },  {
-    labelName: 'Item 4',
+    labelName: '4',
     labelId: 3,
     isRowHighlighted: false,
     iconClass: 'fa fa-trash-o'
