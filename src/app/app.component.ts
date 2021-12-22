@@ -99,6 +99,7 @@ export class AppComponent implements AfterViewInit {
 
     draggables.forEach((draggable) => {
       draggable.addEventListener('dragend', () => {
+        draggable.classList.remove('dragging')
         this.modifiedObjectsAFterDrag = [];
         const listElements = this.getListElementsAfterDrag();
         this.formulateObjectsData(listElements);
@@ -113,29 +114,24 @@ export class AppComponent implements AfterViewInit {
         const draggable: any = document.querySelector('.dragging');
         if (afterElement == null) {
           container.appendChild(draggable);
+        } else {
+          container.insertBefore(draggable, afterElement)
         }
       });
     });
   };
 
-  private getDragAfterElement = (container: any, y: any): void => {
-    const draggableElements = [
-      ...container.querySelectorAll('.draggable:not(.dragging)'),
-    ];
-    return draggableElements.reduce(
-      (closest: any, child: any) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-          return { offset, element: child };
-        } else {
-          return closest;
-        }
-      },
-      {
-        offset: Number.NEGATIVE_INFINITY,
-      }
-    ).element;
+  private getDragAfterElement = (container: any, y: any): any => {
+    const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+    return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect()
+    const offset = y - box.top - box.height / 2
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child }
+    } else {
+      return closest
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element
   };
 
   private getListElementsAfterDrag = (): string[] => {
@@ -170,7 +166,6 @@ export class AppComponent implements AfterViewInit {
     );
   }
 
-  
   public sortAsc = (): void =>  {
     this.objectData = [...this.objectData].sort(
       (a: ObjectDetails, b: ObjectDetails) => a.labelId - b.labelId
